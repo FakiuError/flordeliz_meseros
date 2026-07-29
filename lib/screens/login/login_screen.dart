@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flordeliz_meseros/widget/input.dart';
 import 'package:flordeliz_meseros/services/login/login_service.dart';
-//import 'package:meseros_panaderia_nicol/screens/mesas_screen.dart';
+import 'package:flordeliz_meseros/screens/salon/mesas_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -28,14 +28,12 @@ class _LoginScreenState extends State<LoginScreen> {
     final prefs = await SharedPreferences.getInstance();
     final idUsuario = prefs.getInt('idUsuario');
     if (idUsuario != null) {
-      /*
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (context) => MesasScreen(idUsuario: idUsuario),
         ),
       );
-       */
     } else {
       setState(() => _cargando = false);
     }
@@ -61,14 +59,12 @@ class _LoginScreenState extends State<LoginScreen> {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setInt('idUsuario', idUsuario);
       await prefs.setString('nombreUsuario', usuario);
-      /*
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (context) => MesasScreen(idUsuario: idUsuario),
         ),
       );
-       */
     } else {
       String errorMessage =
           loginResult?['message'] ?? 'Error desconocido al iniciar sesión.';

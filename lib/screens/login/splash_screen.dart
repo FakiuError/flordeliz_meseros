@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:flordeliz_meseros/screens/salon/mesas_screen.dart';
+import 'package:flordeliz_meseros/screens/salon/mesas_screen.dart';
 import 'package:flordeliz_meseros/screens/login/login_screen.dart';
 import 'package:flordeliz_meseros/services/login/splash_service.dart';
 
@@ -33,12 +33,12 @@ class _SplashScreenState extends State<SplashScreen> {
     final response = await _loginService.verificarUsuario(sesion["idUsuario"]);
 
     if (response["success"] == true) {
-      //Navigator.pushReplacement(
-        //context,
-        //MaterialPageRoute(
-          //builder: (_) => MesasScreen(idUsuario: sesion["idUsuario"]),
-        //),
-      //);
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (_) => MesasScreen(idUsuario: sesion["idUsuario"]),
+        ),
+      );
     } else {
       await _loginService.cerrarSesion();
       _mostrarAlerta(response["message"] ?? "Sesión inválida");
